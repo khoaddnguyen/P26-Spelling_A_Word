@@ -15,6 +15,14 @@ print(phonetic_dict)
 
 # 2. Create a list of the phonetic code words from a word that the user inputs
 
-word = input("Enter a name: ").upper()
-phonetic_outputs = [phonetic_dict[letter] for letter in word]
-print(phonetic_outputs)
+def generate_phonetic():
+    word = input("Enter a name: ").upper()
+    try:
+        phonetic_outputs = [phonetic_dict[letter] for letter in word]
+    except KeyError:
+        print("Please input only letters in the alphabet.")
+        generate_phonetic()  # repeat error message as needed
+    else:
+        print(phonetic_outputs)
+
+generate_phonetic()
